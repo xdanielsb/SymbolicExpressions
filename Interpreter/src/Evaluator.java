@@ -18,8 +18,7 @@ public class Evaluator extends Expresion {
       else if (Character.isLetter(e[i])) {
         if(c.is(e[i]+"")) values.push(c.get(e[i]+""));
         else {
-          System.out.print(" -> Bad expresion, unknown identifier '"+e[i]+"'\n");
-          throw new Exception();
+          throw new Exception(" -> Bad expresion, unknown identifier '"+e[i]+"'\n");
         }
       }
       else if (Character.isDigit(e[i])) {
@@ -61,16 +60,14 @@ public class Evaluator extends Expresion {
     else if ('&'==op) aux=new ConcExpresion(a,b);
     else if ('^'==op) aux=new ExpoExpresion(a,b);
     else {
-      System.out.format("-> The operation %c  is not defined",op);
-      throw new Exception();
+      throw new Exception("The operation "+op+"  is not defined");
     }
     // System.out.format("\n %f %c %f",a, op, b);
     return aux.evaluate(c);
   }
   public static void process(Context c) throws Exception {
     if(values.size()<=1) {
-      System.out.println(" -> Bad Expression."); 
-      throw new Exception();
+      throw new Exception(" Bad Expression.");
     }
     values.push(apply(values.pop(),values.pop(),ops.pop(),c));
   }

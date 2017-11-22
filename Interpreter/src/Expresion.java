@@ -35,9 +35,9 @@ class DivExpresion extends Expresion {
     super(a,b);
   }
   @Override
-  public Double evaluate(Context c) {
+  public Double evaluate(Context c) throws Exception {
     if(b!=0) return a/b;
-    return null;
+    else throw new Exception(" Division by 0, not allowed "+a +" / "+b);
   }
 }
 class SubExpresion extends Expresion {
@@ -45,9 +45,8 @@ class SubExpresion extends Expresion {
     super(a,b);
   }
   @Override
-  public Double evaluate(Context c) {
-    if(b!=0) return a-b;
-    return null;
+  public Double evaluate(Context c) throws Exception {
+    return a-b;
   }
 }
 class ModExpresion extends Expresion {

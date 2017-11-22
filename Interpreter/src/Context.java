@@ -28,5 +28,12 @@ public class Context {
       System.out.format("%s = %f\n",a, vars.get(a));
     }
   }
+  public String toString() {
+    String ss = "This is the context: \n";
+    for(String a: vars.keySet()) {
+      ss += a + " = " + vars.get(a) +" \n";
+    }
+    return ss;
+  }
   
 }
